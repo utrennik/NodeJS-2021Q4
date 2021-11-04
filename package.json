@@ -1,0 +1,30 @@
+{
+	"name": "caesar-cipher-cli-tool",
+	"version": "1.0.0",
+	"description": "Node.JS learning task",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "npm run test",
+		"start": "node src/index",
+		"watch": "nodemon src/index",
+		"lint": "eslint src --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/utrennik/NodeJS-2021Q4.git"
+	},
+	"keywords": [
+		"Node.JS"
+	],
+	"author": "utrennik",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/utrennik/NodeJS-2021Q4/issues"
+	},
+	"homepage": "https://github.com/utrennik/NodeJS-2021Q4#readme",
+	"devDependencies": {
+		"eslint": "^7.32.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-plugin-import": "^2.25.2"
+	}
+}
