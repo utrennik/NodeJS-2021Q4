@@ -1,5 +1,4 @@
 const { showError } = require('./show-error');
-const { stdin, stdout } = require('process');
 
 function parseArgs(args) {
 	const config = getByFlags(args, ['-c', '--config']);
@@ -9,10 +8,10 @@ function parseArgs(args) {
 	argsObj.config = config;
 
 	const input = getByFlags(args, ['-i', '--input']);
-	argsObj.input = input || stdin;
+	argsObj.input = input || null;
 
 	const output = getByFlags(args, ['-o', '--output']);
-	argsObj.output = output || stdout;
+	argsObj.output = output || null;
 
 	return argsObj;
 }
