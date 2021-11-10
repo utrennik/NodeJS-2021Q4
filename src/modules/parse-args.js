@@ -1,37 +1,39 @@
 const { showError } = require('./show-error');
 
-function parseArgs(args) {
-	const config = getByFlags(args, ['-c', '--config']);
-	const argsObj = {};
+function getByFlags(args, flags) {
+  let param = null;
 
-	if (!config) showError('Error! No config param!');
-	argsObj.config = config;
+  /* eslint-disable-next-line */
+  for (const flag of flags) {
+    const flagIndex = args.indexOf(flag);
 
-	const input = getByFlags(args, ['-i', '--input']);
-	argsObj.input = input || null;
+    /* eslint-disable-next-line */
+    if (flagIndex === -1) continue;
+    if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1)
+      showError(`Error! Param ${flag} duplicated!`);
 
-	const output = getByFlags(args, ['-o', '--output']);
-	argsObj.output = output || null;
+    param = args[flagIndex + 1];
+  }
 
-	return argsObj;
+  return param;
 }
 
-function getByFlags(args, flags) {
-	let param = null;
+function parseArgs(args) {
+  const config = getByFlags(args, ['-c', '--config']);
+  const argsObj = {};
 
-	for (flag of flags) {
-		const flagIndex = args.indexOf(flag);
+  if (!config) showError('Error! No config param!');
+  argsObj.config = config;
 
-		if (flagIndex === -1) continue;
-		if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1)
-			showError(`Error! Param ${flag} duplicated!`);
+  const input = getByFlags(args, ['-i', '--input']);
+  argsObj.input = input || null;
 
-		param = args[flagIndex + 1];
-	}
+  const output = getByFlags(args, ['-o', '--output']);
+  argsObj.output = output || null;
 
-	return param;
+  return argsObj;
 }
 
 module.exports = {
-	parseArgs,
+  parseArgs,
 };
