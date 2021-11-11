@@ -19,6 +19,9 @@ function getOutputStream(outputFile, rootdir) {
     return stdout;
   }
   const filePath = path.join(rootdir, outputFile);
+  if (!fs.existsSync(filePath)) {
+    showError('Error! Output file not found!');
+  }
   return fs.createWriteStream(filePath).on('error', (e) => {
     showError(e.message);
   });
