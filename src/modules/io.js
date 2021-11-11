@@ -22,9 +22,13 @@ function getOutputStream(outputFile, rootdir) {
   if (!fs.existsSync(filePath)) {
     showError('Error! Output file not found!');
   }
-  return fs.createWriteStream(filePath).on('error', (e) => {
-    showError(e.message);
-  });
+  return fs
+    .createWriteStream(filePath, {
+      flags: 'a',
+    })
+    .on('error', (e) => {
+      showError(e.message);
+    });
 }
 
 module.exports = {

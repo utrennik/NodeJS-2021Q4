@@ -5,15 +5,16 @@ const LAST_CAPITAL_CODE = FIRST_CAPITAL_CODE + LETTERS_QUANTITY;
 const LAST_SMALL_CODE = FIRST_SMALL_CODE + LETTERS_QUANTITY;
 
 function encode(data, shift, isEncoding) {
-  const arr = `${data}`.trim().split('');
+  const arr = `${data}`.split('');
   return arr
     .map((char) => {
       const charCode = char.charCodeAt(0);
       if (
-        charCode < FIRST_CAPITAL_CODE
-        || (charCode > LAST_CAPITAL_CODE && charCode < FIRST_SMALL_CODE)
-        || charCode > LAST_SMALL_CODE
-      ) return char;
+        charCode < FIRST_CAPITAL_CODE ||
+        (charCode > LAST_CAPITAL_CODE && charCode < FIRST_SMALL_CODE) ||
+        charCode > LAST_SMALL_CODE
+      )
+        return char;
 
       let newCharCode;
       let charStartPos;
