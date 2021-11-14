@@ -1,4 +1,5 @@
-const { showError } = require('./show-error');
+const ConfigError = require('../errors/config-error');
+const ParamError = require('../errors/param-error');
 
 function getByFlags(args, flags) {
   let param = null;
@@ -10,7 +11,7 @@ function getByFlags(args, flags) {
     /* eslint-disable-next-line */
     if (flagIndex === -1) continue;
     if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1)
-      showError(`Error! Param ${flag} duplicated!`);
+      throw new ParamError(`Error! Param ${flag} duplicated!`);
 
     param = args[flagIndex + 1];
   }
@@ -22,7 +23,7 @@ function parseArgs(args) {
   const config = getByFlags(args, ['-c', '--config']);
   const argsObj = {};
 
-  if (!config) showError('Error! No config param!');
+  if (!config) throw new ConfigError('Error! No config param!');
   argsObj.config = config;
 
   const input = getByFlags(args, ['-i', '--input']);

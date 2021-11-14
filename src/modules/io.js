@@ -1,7 +1,8 @@
 const { stdin, stdout } = require('process');
 const fs = require('fs');
 const path = require('path');
-const { showError } = require('./show-error');
+const FileReadError = require('../errors/file-read-error');
+const FileWriteError = require('../errors/file-write-error');
 
 function getInputStream(inputFile, rootdir) {
   if (!inputFile) {
@@ -10,7 +11,7 @@ function getInputStream(inputFile, rootdir) {
   }
   const filePath = path.join(rootdir, inputFile);
   return fs.createReadStream(filePath, 'utf-8').on('error', (e) => {
-    showError(e.message);
+    throw new FileReadError(e.message);
   });
 }
 
@@ -20,14 +21,14 @@ function getOutputStream(outputFile, rootdir) {
   }
   const filePath = path.join(rootdir, outputFile);
   if (!fs.existsSync(filePath)) {
-    showError('Error! Output file not found!');
+    throw new FileWriteError('Error! Output file not found!');
   }
   return fs
     .createWriteStream(filePath, {
       flags: 'a',
     })
     .on('error', (e) => {
-      showError(e.message);
+      throw new FileWriteError(e.message);
     });
 }
 

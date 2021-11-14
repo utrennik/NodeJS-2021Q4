@@ -1,11 +1,11 @@
 const { Caesar } = require('../streams/caesar');
 const { Atbash } = require('../streams/atbash');
 const { Rot8 } = require('../streams/rot-8');
-const { showError } = require('./show-error');
+const ConfigError = require('../errors/config-error');
 const { validateConfig } = require('./validate-config');
 
 function getEncStreams(config) {
-  if (!validateConfig(config)) showError('Error! Config is invalid!');
+  if (!validateConfig(config)) throw new ConfigError('Error! Config is invalid!');
 
   const argsArr = config.split(/-/);
 
