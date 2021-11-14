@@ -10,8 +10,7 @@ function getByFlags(args, flags) {
 
     /* eslint-disable-next-line */
     if (flagIndex === -1) continue;
-    if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1)
-      throw new ParamError(`Error! Param ${flag} duplicated!`);
+    if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1) throw new ParamError(`Error! Param ${flag} duplicated!`);
 
     param = args[flagIndex + 1];
   }

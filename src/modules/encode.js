@@ -10,11 +10,10 @@ function encode(data, shift, isEncoding) {
     .map((char) => {
       const charCode = char.charCodeAt(0);
       if (
-        charCode < FIRST_CAPITAL_CODE ||
-        (charCode > LAST_CAPITAL_CODE && charCode < FIRST_SMALL_CODE) ||
-        charCode > LAST_SMALL_CODE
-      )
-        return char;
+        charCode < FIRST_CAPITAL_CODE
+        || (charCode > LAST_CAPITAL_CODE && charCode < FIRST_SMALL_CODE)
+        || charCode > LAST_SMALL_CODE
+      ) return char;
 
       let newCharCode;
       let charStartPos;

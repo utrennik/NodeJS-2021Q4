@@ -2,9 +2,10 @@ const fs = require('fs');
 const { Readable } = require('stream');
 
 class FileReadStream extends Readable {
-  constructor(fileName) {
+  constructor(fileName, encoding) {
     super();
     this.fileName = fileName;
+    this.setEncoding(encoding);
     this.fd = null;
   }
 
