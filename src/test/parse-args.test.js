@@ -1,5 +1,5 @@
-const { ConfigError, ParamError } = require('../../errors');
-const { parseArgs } = require('../parse-args');
+const { ConfigError, ParamError } = require('../errors');
+const { parseArgs } = require('../modules/parse-args');
 
 describe('Testing arguments parsing', () => {
   it('Should return proper config', async () => {

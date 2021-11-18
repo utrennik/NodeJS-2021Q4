@@ -1,6 +1,6 @@
-const { getEncStreams } = require('../get-enc-streams');
-const { Caesar, Atbash, Rot8 } = require('../../streams');
-const { ConfigError } = require('../../errors');
+const { getEncStreams } = require('../modules/get-enc-streams');
+const { Caesar, Atbash, Rot8 } = require('../streams');
+const { ConfigError } = require('../errors');
 
 describe('Test transform streams generation', () => {
   it('Should generate encoding Caesar stream', async () => {

@@ -1,6 +1,6 @@
-const { getInputStream, getOutputStream } = require('../io');
-const { FileReadStream, FileWriteStream } = require('../../streams');
-const { FileWriteError } = require('../../errors');
+const { getInputStream, getOutputStream } = require('../modules/io');
+const { FileReadStream, FileWriteStream } = require('../streams');
+const { FileWriteError } = require('../errors');
 
 const file = '/mocks/file.txt';
 

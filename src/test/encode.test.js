@@ -1,4 +1,4 @@
-const { encode } = require('../encode');
+const { encode } = require('../modules/encode');
 
 describe('Testing encode function in encoding mode', () => {
   it('Atbash encoding', async () => {
