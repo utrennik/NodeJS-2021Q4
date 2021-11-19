@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/utrennik/NodeJS-2021Q4#readme",
   "devDependencies": {
+    "concat-stream": "^2.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
