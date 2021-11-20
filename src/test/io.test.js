@@ -1,6 +1,6 @@
 const { getInputStream, getOutputStream } = require('../modules/io');
 const { FileReadStream, FileWriteStream } = require('../streams');
-const { FileWriteError } = require('../errors');
+const { FileWriteError, FileReadError } = require('../errors');
 
 const file = '/mocks/file.txt';
 
@@ -31,5 +31,11 @@ describe('Testing IO module', () => {
     expect(() => {
       getOutputStream(badFile, __dirname);
     }).toThrow(FileWriteError);
+  });
+
+  it('should throw FileReadError', async () => {
+    expect(() => {
+      getInputStream(badFile, __dirname);
+    }).toThrow(FileReadError);
   });
 });

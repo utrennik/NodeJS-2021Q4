@@ -16,6 +16,7 @@ describe('Testing config validation', () => {
   const invalidConfigWrongEncParam1 = 'C2-C0-A-R1-R0-A-R0-R0-C1-A';
   const invalidConfigWrongEncParam2 = 'C1-C0-A1-R1-R0-A-R0-R0-C1-A';
   const invalidConfigWrongEncParam3 = 'C1-C0-A1-R1-R0-A-R0-R4-C1-A';
+  const invalidConfigWrongEncParam4 = 'C11-C0-A1-R1-R0-A-R0-R4-C1-A';
 
   it('Should decline invalid config with wrong encoding type C param', async () => {
     expect(validateConfig(invalidConfigWrongEncParam1)).toBeFalsy();
@@ -27,5 +28,9 @@ describe('Testing config validation', () => {
 
   it('Should decline invalid config with wrong encoding type R param', async () => {
     expect(validateConfig(invalidConfigWrongEncParam3)).toBeFalsy();
+  });
+
+  it('Should decline invalid config with wrong subparams quantity', async () => {
+    expect(validateConfig(invalidConfigWrongEncParam4)).toBeFalsy();
   });
 });

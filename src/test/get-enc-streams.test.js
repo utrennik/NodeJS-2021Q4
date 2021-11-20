@@ -1,3 +1,4 @@
+const Transform = require('stream');
 const { getEncStreams } = require('../modules/get-enc-streams');
 const { Caesar, Atbash, Rot8 } = require('../streams');
 const { ConfigError } = require('../errors');

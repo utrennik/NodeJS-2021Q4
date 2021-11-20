@@ -27,3 +27,29 @@ describe('Testing encode function in decoding mode', () => {
     expect(encode('Itmf', 8, false)).toStrictEqual('Alex');
   });
 });
+
+describe('Testing encode function witn non-english letters', () => {
+  it('Atbash decoding', async () => {
+    expect(encode('Тест', null, false)).toStrictEqual('Тест');
+  });
+
+  it('Caesar decoding', async () => {
+    expect(encode('Тест', 1, false)).toStrictEqual('Тест');
+  });
+
+  it('ROT-8 decoding', async () => {
+    expect(encode('Тест', 8, false)).toStrictEqual('Тест');
+  });
+
+  it('Atbash encoding', async () => {
+    expect(encode('Тест', null, true)).toStrictEqual('Тест');
+  });
+
+  it('Caesar encoding', async () => {
+    expect(encode('Тест', 1, true)).toStrictEqual('Тест');
+  });
+
+  it('ROT-8 encoding', async () => {
+    expect(encode('Тест', 8, true)).toStrictEqual('Тест');
+  });
+});

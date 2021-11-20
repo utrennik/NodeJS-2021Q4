@@ -9,6 +9,20 @@ describe('Testing arguments parsing', () => {
     expect(parsed.config).toEqual('A-R0-C1');
   });
 
+  it('Config.output should be null if no --output param provided', async () => {
+    const args = ['--config', 'A-R0-C1', '--input', 'file.txt'];
+    const parsed = parseArgs(args);
+
+    expect(parsed.output).toEqual(null);
+  });
+
+  it('Config.input should be null if no --input param provided', async () => {
+    const args = ['--config', 'A-R0-C1', '--output', 'file.txt'];
+    const parsed = parseArgs(args);
+
+    expect(parsed.input).toEqual(null);
+  });
+
   it('Should throw ParamError on config args duplication', async () => {
     const duplicatedConfig = ['-c', 'A', '-c', 'C1', '-i', 'file.txt', '-o', 'file.txt'];
 

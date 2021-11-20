@@ -26,10 +26,6 @@ function getEncStreams(config) {
       case 'R': {
         return new Rot8(isEncoding);
       }
-
-      default: {
-        return new Transform();
-      }
     }
   });
 
