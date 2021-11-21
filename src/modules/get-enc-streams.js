@@ -1,4 +1,3 @@
-const { Transform } = require('stream');
 const { Caesar } = require('../streams/caesar');
 const { Atbash } = require('../streams/atbash');
 const { Rot8 } = require('../streams/rot-8');

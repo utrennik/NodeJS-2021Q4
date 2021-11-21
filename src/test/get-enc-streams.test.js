@@ -1,7 +1,7 @@
-const Transform = require('stream');
 const { getEncStreams } = require('../modules/get-enc-streams');
 const { Caesar, Atbash, Rot8 } = require('../streams');
 const { ConfigError } = require('../errors');
+const { validateConfig } = require('../modules/validate-config');
 
 describe('Test transform streams generation', () => {
   it('Should generate encoding Caesar stream', async () => {
@@ -62,6 +62,15 @@ describe('Test multiple streams generation', () => {
 });
 
 describe('Test config validation', () => {
+  if (
+    ('Should call config validation',
+    async () => {
+      validateConfig = jest.fn();
+      getEncStreams('A');
+      expect(validateConfig).toHaveBeenCalledWith('A');
+    })
+  );
+
   it('Should throw ConfigError on invalid config', async () => {
     expect(() => {
       getEncStreams('C3-S0');

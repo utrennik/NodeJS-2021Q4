@@ -3,7 +3,6 @@ const fs = require('fs');
 const { FileWriteStream, FileReadStream } = require('../streams');
 
 const file = '\\mocks\\output.txt';
-const badFile = '\\bad\\path.txt';
 const data = 'This is secret. Message about "_" symbol!';
 const filePath = path.join(__dirname, file);
 
