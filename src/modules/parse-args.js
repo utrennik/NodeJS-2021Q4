@@ -1,5 +1,4 @@
-const ConfigError = require('../errors/config-error');
-const ParamError = require('../errors/param-error');
+const { ConfigError, ParamError } = require('../errors');
 
 function getByFlags(args, flags) {
   let param = null;
@@ -10,7 +9,8 @@ function getByFlags(args, flags) {
 
     /* eslint-disable-next-line */
     if (flagIndex === -1) continue;
-    if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1) throw new ParamError(`Error! Param ${flag} duplicated!`);
+    if (param || args.slice(flagIndex + 1).indexOf(flag) !== -1)
+      throw new ParamError(`Error! Param ${flag} duplicated!`);
 
     param = args[flagIndex + 1];
   }

@@ -12,8 +12,11 @@ function getInputStream(inputFile, rootdir) {
     return stdin;
   }
   const filePath = path.join(rootdir, inputFile);
+  if (!fs.existsSync(filePath)) {
+    throw new FileReadError('Input file not found!');
+  }
   return new FileReadStream(filePath, 'utf-8').on('error', (e) => {
-    throw new FileReadError(e.message);
+    throw new FileReadError('Input file not found!');
   });
 }
 
@@ -23,10 +26,10 @@ function getOutputStream(outputFile, rootdir) {
   }
   const filePath = path.join(rootdir, outputFile);
   if (!fs.existsSync(filePath)) {
-    throw new FileWriteError('Error! Output file not found!');
+    throw new FileWriteError('Output file not found!');
   }
   return new FileWriteStream(filePath).on('error', (e) => {
-    throw new FileWriteError(e.message);
+    throw new FileWriteError('Output file not found!');
   });
 }
 

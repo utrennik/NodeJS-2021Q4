@@ -1,4 +1,3 @@
-const { Transform } = require('stream');
 const { Caesar } = require('../streams/caesar');
 const { Atbash } = require('../streams/atbash');
 const { Rot8 } = require('../streams/rot-8');
@@ -25,10 +24,6 @@ function getEncStreams(config) {
 
       case 'R': {
         return new Rot8(isEncoding);
-      }
-
-      default: {
-        return new Transform();
       }
     }
   });
