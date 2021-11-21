@@ -30,7 +30,17 @@ describe('Testing FileWriteStream', () => {
           res(chunk);
         });
       });
+
       expect(outputData.trim()).toEqual(data);
+    });
+  });
+
+  it('Should call _write method when write data to file', async () => {
+    const outputStream = new FileWriteStream(filePath);
+    outputStream._write = jest.fn();
+
+    outputStream.write(data, async () => {
+      expect(outputStream._write).toHaveBeenCalled();
     });
   });
 
